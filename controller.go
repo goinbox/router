@@ -1,26 +1,30 @@
 package router
 
+import (
+	"github.com/goinbox/pcontext"
+)
+
 type Controller interface {
 	Name() string
 }
 
-type Action interface {
+type Action[T pcontext.Context] interface {
 	Name() string
 
-	Before()
-	Run()
-	After()
-	Destruct()
+	Before(ctx T)
+	Run(ctx T)
+	After(ctx T)
+	Destruct(ctx T)
 }
 
-type BaseAction struct {
+type BaseAction[T pcontext.Context] struct {
 }
 
-func (b BaseAction) Before() {
+func (b *BaseAction[T]) Before(ctx T) {
 }
 
-func (b BaseAction) After() {
+func (b *BaseAction[T]) After(ctx T) {
 }
 
-func (b BaseAction) Destruct() {
+func (b *BaseAction[T]) Destruct(ctx T) {
 }
