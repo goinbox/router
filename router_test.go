@@ -27,6 +27,7 @@ func TestRouter(t *testing.T) {
 		vs := route.NewActionFunc.Call(nil)
 		action := vs[0].Interface().(Action[pcontext.Context])
 		t.Log("action", action.Name())
-		action.Run(nil)
+		err := action.Run(nil)
+		t.Log(err)
 	}
 }

@@ -37,8 +37,9 @@ func (a *addAction) Name() string {
 	return "add"
 }
 
-func (a *addAction) Run(ctx pcontext.Context) {
+func (a *addAction) Run(ctx pcontext.Context) error {
 	fmt.Println("run add")
+	return nil
 }
 
 type delAction struct {
@@ -49,8 +50,9 @@ func (a *delAction) Name() string {
 	return "del"
 }
 
-func (a *delAction) Run(ctx pcontext.Context) {
+func (a *delAction) Run(ctx pcontext.Context) error {
 	fmt.Println("run del")
+	return nil
 }
 
 type editAction struct {
@@ -61,8 +63,9 @@ func (a *editAction) Name() string {
 	return "edit"
 }
 
-func (a *editAction) Run(ctx pcontext.Context) {
+func (a *editAction) Run(ctx pcontext.Context) error {
 	fmt.Println("run edit")
+	return nil
 }
 
 type getAction struct {
@@ -73,6 +76,7 @@ func (a *getAction) Name() string {
 	return "get"
 }
 
-func (a *getAction) Run(ctx pcontext.Context) {
+func (a *getAction) Run(ctx pcontext.Context) error {
 	fmt.Println("run get")
+	return nil
 }

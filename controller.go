@@ -11,20 +11,23 @@ type Controller interface {
 type Action[T pcontext.Context] interface {
 	Name() string
 
-	Before(ctx T)
-	Run(ctx T)
-	After(ctx T)
-	Destruct(ctx T)
+	Before(ctx T) error
+	Run(ctx T) error
+	After(ctx T) error
+	Destruct(ctx T) error
 }
 
 type BaseAction[T pcontext.Context] struct {
 }
 
-func (b *BaseAction[T]) Before(ctx T) {
+func (b *BaseAction[T]) Before(ctx T) error {
+	return nil
 }
 
-func (b *BaseAction[T]) After(ctx T) {
+func (b *BaseAction[T]) After(ctx T) error {
+	return nil
 }
 
-func (b *BaseAction[T]) Destruct(ctx T) {
+func (b *BaseAction[T]) Destruct(ctx T) error {
+	return nil
 }
