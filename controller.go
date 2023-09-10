@@ -13,8 +13,7 @@ type Action[T pcontext.Context] interface {
 
 	Before(ctx T) error
 	Run(ctx T) error
-	After(ctx T) error
-	Destruct(ctx T) error
+	After(ctx T, err error)
 }
 
 type BaseAction[T pcontext.Context] struct {
@@ -24,10 +23,5 @@ func (b *BaseAction[T]) Before(ctx T) error {
 	return nil
 }
 
-func (b *BaseAction[T]) After(ctx T) error {
-	return nil
-}
-
-func (b *BaseAction[T]) Destruct(ctx T) error {
-	return nil
+func (b *BaseAction[T]) After(ctx T, err error) {
 }
