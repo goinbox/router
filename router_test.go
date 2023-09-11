@@ -2,8 +2,6 @@ package router
 
 import (
 	"testing"
-
-	"github.com/goinbox/pcontext"
 )
 
 func TestRouter(t *testing.T) {
@@ -25,9 +23,9 @@ func TestRouter(t *testing.T) {
 		t.Log("controller", route.C.Name())
 
 		vs := route.NewActionFunc.Call(nil)
-		action := vs[0].Interface().(Action[pcontext.Context])
+		action := vs[0].Interface().(demoAction)
 		t.Log("action", action.Name())
-		err := action.Run(nil)
+		err := action.Run()
 		t.Log(err)
 	}
 }

@@ -2,8 +2,6 @@ package router
 
 import (
 	"fmt"
-
-	"github.com/goinbox/pcontext"
 )
 
 type demoController struct {
@@ -13,70 +11,71 @@ func (c *demoController) Name() string {
 	return "demo"
 }
 
-func (c *demoController) AddAction() Action[pcontext.Context] {
+func (c *demoController) AddAction() *addAction {
 	return new(addAction)
 }
 
-func (c *demoController) DelAction() Action[pcontext.Context] {
+func (c *demoController) DelAction() *delAction {
 	return new(delAction)
 }
 
-func (c *demoController) EditAction() Action[pcontext.Context] {
+func (c *demoController) EditAction() *editAction {
 	return new(editAction)
 }
 
-func (c *demoController) GetAction() Action[pcontext.Context] {
+func (c *demoController) GetAction() *getAction {
 	return new(getAction)
 }
 
+type demoAction interface {
+	Name() string
+	Run() error
+}
+
 type addAction struct {
-	BaseAction[pcontext.Context]
 }
 
 func (a *addAction) Name() string {
 	return "add"
 }
 
-func (a *addAction) Run(ctx pcontext.Context) error {
+func (a *addAction) Run() error {
 	fmt.Println("run add")
 	return nil
 }
 
 type delAction struct {
-	BaseAction[pcontext.Context]
 }
 
 func (a *delAction) Name() string {
 	return "del"
 }
 
-func (a *delAction) Run(ctx pcontext.Context) error {
+func (a *delAction) Run() error {
 	fmt.Println("run del")
 	return nil
 }
 
 type editAction struct {
-	BaseAction[pcontext.Context]
 }
 
 func (a *editAction) Name() string {
 	return "edit"
 }
 
-func (a *editAction) Run(ctx pcontext.Context) error {
+func (a *editAction) Run() error {
 	fmt.Println("run edit")
 	return nil
 }
 
 type getAction struct {
-	BaseAction[pcontext.Context]
 }
 
 func (a *getAction) Name() string {
 	return "get"
 }
 
-func (a *getAction) Run(ctx pcontext.Context) error {
+func (a *getAction) Run() error {
 	fmt.Println("run get")
 	return nil
 }
